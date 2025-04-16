@@ -132,4 +132,4 @@ streamlit run dashboard.py
 
 ## Contact
 
-For questions or support, open an issue or contact the project maintainer.
+For questions or support open an issue or contact the project maintainer.

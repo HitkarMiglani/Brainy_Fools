@@ -1,0 +1,9 @@
+langchain
+chromadb
+sentence-transformers
+pandas
+numpy
+python-dotenv
+huggingface-hub
+torch
+transformers 

@@ -113,7 +113,7 @@ from dotenv import load_dotenv
 from typing import Dict, List, Optional, Union
 from datetime import datetime
 import logging
-from .utils.api_integrations import ExternalDataAnalyzer
+from utils.api_integrations import ExternalDataAnalyzer
 
 load_dotenv()
 

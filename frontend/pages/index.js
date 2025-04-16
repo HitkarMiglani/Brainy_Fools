@@ -7,6 +7,7 @@ export default function Dashboard() {
   const [inventory, setInventory] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [item, setItem] = useState(null);
 
   useEffect(() => {
     fetchData();
@@ -14,13 +15,15 @@ export default function Dashboard() {
 
   const fetchData = async () => {
     try {
-      const [forecastRes, inventoryRes] = await Promise.all([
+      const [forecastRes, inventoryRes,item] = await Promise.all([
         axios.get('http://localhost:8000/forecast'),
-        axios.get('http://localhost:8000/inventory-recommendations')
+        axios.get('http://localhost:8000/inventory-recommendations'),
+        axios.get('http://localhost:8000/upload-data')
       ]);
       
       setForecast(forecastRes.data.forecast);
       setInventory(inventoryRes.data.recommendations);
+      setItem(item.data.item);
       setLoading(false);
     } catch (err) {
       setError(err.message);
@@ -30,6 +33,8 @@ export default function Dashboard() {
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
+
+  console.log('inventory:', item);
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -65,7 +70,7 @@ export default function Dashboard() {
                 </tr>
               </thead>
               <tbody>
-                {inventory.map((item) => (
+                {item && inventory.map((item) => (
                   <tr key={item.product_id} className={item.status === 'Reorder needed' ? 'bg-red-50' : ''}>
                     <td className="px-4 py-2">{item.product_id}</td>
                     <td className="px-4 py-2">{item.current_stock}</td>

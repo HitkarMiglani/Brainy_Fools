@@ -3,9 +3,9 @@ from fastapi.middleware.cors import CORSMiddleware
 import pandas as pd
 from typing import List, Dict
 import json
-from .rag_pipeline import RetailRAGPipeline
-from .models.forecasting import ProphetForecaster
-from .models.inventory import InventoryOptimizer
+from rag_pipeline import RetailRAGPipeline
+from models.forecasting import ProphetForecaster
+from models.inventory import InventoryOptimizer
 
 app = FastAPI(title="Retail Demand Forecasting API")
 
@@ -23,14 +23,14 @@ rag_pipeline = None
 forecaster = None
 inventory_optimizer = None
 
-@app.post("/upload-data")
-async def upload_data(file: UploadFile = File(...)):
+@app.get("/upload-data")
+async def upload_data(file = "data/retail_store_inventory.csv"):
     """Upload and process retail data"""
     try:
-        df = pd.read_csv(file.file)
+        df = pd.read_csv(file)
         # Save the data
-        df.to_csv("data/retail_data.csv", index=False)
-        return {"message": "Data uploaded successfully"}
+        df.to_csv("data/retail_store_inventory.csv", index=False)
+        return {"message": "Data uploaded successfully","item" : df.to_dict()}
     except Exception as e:
         return {"error": str(e)}
 

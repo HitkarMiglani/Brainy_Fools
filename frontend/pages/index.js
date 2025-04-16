@@ -1,6 +1,14 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { useState, useEffect } from "react";
+import axios from "axios";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+} from "recharts";
 
 export default function Dashboard() {
   const [forecast, setForecast] = useState(null);
@@ -15,12 +23,12 @@ export default function Dashboard() {
 
   const fetchData = async () => {
     try {
-      const [forecastRes, inventoryRes,item] = await Promise.all([
-        axios.get('http://localhost:8000/forecast'),
-        axios.get('http://localhost:8000/inventory-recommendations'),
-        axios.get('http://localhost:8000/upload-data')
+      const [forecastRes, inventoryRes, item] = await Promise.all([
+        axios.get("http://localhost:8000/forecast"),
+        axios.get("http://localhost:8000/inventory-recommendations"),
+        axios.get("http://localhost:8000/upload-data"),
       ]);
-      
+
       setForecast(forecastRes.data.forecast);
       setInventory(inventoryRes.data.recommendations);
       setItem(item.data.item);
@@ -34,12 +42,14 @@ export default function Dashboard() {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
-  console.log('inventory:', item);
+  console.log("inventory:", inventory);
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Retail Demand Forecasting Dashboard</h1>
-      
+      <h1 className="text-3xl font-bold mb-8">
+        Retail Demand Forecasting Dashboard
+      </h1>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Forecast Chart */}
         <div className="bg-white p-6 rounded-lg shadow">
@@ -70,14 +80,20 @@ export default function Dashboard() {
                 </tr>
               </thead>
               <tbody>
-                {item && inventory.map((item) => (
-                  <tr key={item.product_id} className={item.status === 'Reorder needed' ? 'bg-red-50' : ''}>
-                    <td className="px-4 py-2">{item.product_id}</td>
-                    <td className="px-4 py-2">{item.current_stock}</td>
-                    <td className="px-4 py-2">{item.reorder_point}</td>
-                    <td className="px-4 py-2">{item.status}</td>
-                  </tr>
-                ))}
+                {item &&
+                  inventory.map((item) => (
+                    <tr
+                      key={item.product_id}
+                      className={
+                        item.status === "Reorder needed" ? "bg-red-50" : ""
+                      }
+                    >
+                      <td className="px-4 py-2">{item.product_id}</td>
+                      <td className="px-4 py-2">{item.current_stock}</td>
+                      <td className="px-4 py-2">{item.reorder_point}</td>
+                      <td className="px-4 py-2">{item.status}</td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>
@@ -85,4 +101,4 @@ export default function Dashboard() {
       </div>
     </div>
   );
-} 
+}

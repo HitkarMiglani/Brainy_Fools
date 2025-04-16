@@ -24,13 +24,14 @@ forecaster = None
 inventory_optimizer = None
 
 @app.get("/upload-data")
-async def upload_data(file = "data/retail_store_inventory.csv"):
+async def upload_data(file = "backend/app/data/retail_store_inventory.csv"):
     """Upload and process retail data"""
     try:
         df = pd.read_csv(file)
         # Save the data
-        df.to_csv("data/retail_store_inventory.csv", index=False)
-        return {"message": "Data uploaded successfully","item" : df.to_dict()}
+        print(df.head())
+        # df.to_csv("data/retail_store_inventory.csv", index=False)
+        return {"message": "Data uploaded successfully","item" : df.head(20).to_json()}
     except Exception as e:
         return {"error": str(e)}
 

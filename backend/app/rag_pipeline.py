@@ -29,8 +29,8 @@ class RetailRAGPipeline:
         
         # Create product descriptions by combining relevant columns
         df['product_context'] = df.apply(
-            lambda row: f"Product: {row['product_name']}, Category: {row['category']}, "
-                       f"Current Stock: {row['current_stock']}, Price: {row['price']}, "
+            lambda row: f"Product: {row['Name']}, Category: {row['Category_Type']}, "
+                       f"Current Stock: {row['Inventory Level']}, Price: {row['Price']}, "
                        f"Historical Sales: {row['historical_sales']}",
             axis=1
         )
@@ -85,7 +85,7 @@ class RetailRAGPipeline:
 # Example usage
 if __name__ == "__main__":
     # Initialize the pipeline
-    rag_pipeline = RetailRAGPipeline("retail_store_inventory.csv")
+    rag_pipeline = RetailRAGPipeline(r"backend\app\data\retail_store_inventory_cleaned.csv")
     rag_pipeline.initialize_pipeline()
     
     # Example queries

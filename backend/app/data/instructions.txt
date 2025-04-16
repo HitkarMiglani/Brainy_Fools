@@ -1,0 +1,21 @@
+-> Dataset is fetched from - Retail Store Inventory Forecasting Dataset - kaggle 
+
+-> Modulation has been done to remove the attributes that are not needed and added some features like name category_type 
+
+-> Is_Spring: 1 if the date is between February 15 and April 14, else 0.
+
+-> Is_Summer: 1 if the date is between April 15 and June 14, else 0.
+
+-> Is_Monsoon: 1 if the date is between June 15 and August 14, else 0.
+
+-> Is_Autumn: 1 if the date is between August 15 and October 14, else 0.
+
+-> Is_Pre-winter: 1 if the date is between October 15 and December 14, else 0.
+
+-> Is_Winter: 1 if the date is between December 15 and February 14, else 0.
+
+-> Inventory to sales 
+=> Definition: This column is the ratio of Inventory Level to Units Sold for each row, calculated as Inventory Level / Units Sold. 
+To avoid division by zero, cases where Units Sold is zero are handled by replacing zero with 1.
+
+retail_store_inventory_modified_2 is our main dataset 

@@ -51,10 +51,7 @@ D --> E[Dashboard]
 ## Datasets
 
 - **Sales &amp; Inventory**
-  - [Walmart Sales Dataset (Kaggle)](https://www.kaggle.com/datasets/vetrirah/walmart-dataset)
-  - [Retail Analysis with Walmart (Kaggle)](https://www.kaggle.com/datasets/rohitsahoo/sales-forecasting)
-  - [UCI Online Retail Dataset](https://archive.ics.uci.edu/dataset/352/online+retail)
-  - [Mendeley Sales Dataset](https://data.mendeley.com/datasets/sv3vg8g755)
+  Systhentic Dataset from Created different LLMs referencing a sample dataset from kaggle 
 - **Weather**
   - [OpenWeatherMap API](https://openweathermap.org/api)
 - **Social Media Sentiment**

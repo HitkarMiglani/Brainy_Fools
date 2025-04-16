@@ -9,6 +9,9 @@ from models.inventory import InventoryOptimizer
 
 app = FastAPI(title="Retail Demand Forecasting API")
 
+twitter_api = TwitterAPI()
+weather_api = WeatherAPI()
+
 # Enable CORS
 app.add_middleware(
     CORSMiddleware,
@@ -81,7 +84,23 @@ async def get_inventory_recommendations():
         return {"recommendations": recommendations}
     except Exception as e:
         return {"error": str(e)}
+@app.get("/trending-topics")
+async def get_trending_topics(woeid: int = 1):
+    """Get trending topics from Twitter for a specific location"""
+    try:
+        trends = twitter_api.get_trending_topics(woeid)
+        return {"trends": trends}
+    except Exception as e:
+        return {"error": str(e)}
 
+@app.get("/weather")
+async def get_weather(city: str, country_code: str = None):
+    """Get weather data for a specific city"""
+    try:
+        weather_data = weather_api.get_weather(city, country_code)
+        return {"weather": weather_data}
+    except Exception as e:
+        return {"error": str(e)}
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000) 

@@ -43,7 +43,7 @@ D --> E[Dashboard]
 | RAG Pipeline           | LangChain, LlamaIndex, ChromaDB, Hugging Face Transformers                      |
 | Forecasting Model      | Facebook Prophet, PyTorch (LSTM/GRU), Scikit-learn                              |
 | Inventory Logic        | Python, Rule-based/ML-based optimization                                        |
-| Frontend/Dashboard     | Streamlit (rapid prototyping) or React + D3.js                                  |
+| Frontend/Dashboard     | React                                   |
 | APIs &amp; Integration     | FastAPI, WebSocket, Mockaroo (mock data)                                        |
 
 ---
@@ -67,8 +67,8 @@ D --> E[Dashboard]
 ### 1. Clone the Repository
 ```
 
-git clone https://github.com/yourusername/retail-demand-forecasting.git
-cd retail-demand-forecasting
+git clone https://github.com/HitkarMiglani/Brainy_Fools.git
+cd Brainy_Fools
 
 ```
 
@@ -86,14 +86,16 @@ pip install -r requirements.txt
 ### 4. Run the Pipeline
 ```
 
-python main.py
+cd backend && python run.py
 
 ```
 
 ### 5. Launch the Dashboard
 ```
+cd frontend 
+npm install 
+npm start
 
-streamlit run dashboard.py
 
 ```
 
@@ -126,7 +128,3 @@ streamlit run dashboard.py
 - [Streamlit Documentation](https://docs.streamlit.io/)
 
 ---
-
-## Contact
-update
-For questions or support open an issue or contact the project maintainer.

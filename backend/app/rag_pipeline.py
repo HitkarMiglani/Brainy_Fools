@@ -114,7 +114,6 @@ class RetailRAGPipeline:
                     text = f"""
                     Date: {row['Date']}
                     Store ID: {row['Store ID']}
-                    Product ID: {row['Product ID']}
                     Category: {row['Category']}
                     Region: {row['Region']}
                     Inventory Level: {row['Inventory Level']}
@@ -126,7 +125,7 @@ class RetailRAGPipeline:
                     Weather: {row['Weather Condition']}
                     Holiday/Promotion: {row['Holiday/Promotion']}
                     Competitor Pricing: {row['Competitor Pricing']}
-                    Seasonality: {row['Seasonality']}
+                    Seasonality: {row['Season']}
                     Product Type: {row['Category_Type']}
                     Product Name: {row['Name']}
                     """
@@ -191,7 +190,7 @@ class RetailRAGPipeline:
                 embedding_function=self.embeddings
             )
             existing_count = existing_db._collection.count()
-            if (existing_count == len(texts)):
+            if (existing_count != len(texts)):
                 print(f"Using existing vector store with {existing_count} documents.")
                 self.vector_store = existing_db
                 return
@@ -389,7 +388,7 @@ class RetailRAGPipeline:
 # Example usage
 if __name__ == "__main__":
     # Initialize the pipeline
-    rag_pipeline = RetailRAGPipeline("data/retail_store_inventory_cleaned.csv")
+    rag_pipeline = RetailRAGPipeline("data/store_S004_inventory.csv")
     rag_pipeline.initialize_pipeline()
     
     # Example queries with external context

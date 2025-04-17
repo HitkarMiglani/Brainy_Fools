@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import Layout from '../components/Layout';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/Card';
 import { Alert, AlertDescription } from '../components/ui/Alert';
 
@@ -37,23 +36,23 @@ export default function Inventory() {
   );
 
   if (loading) return (
-    <Layout>
+    <div>
       <div className="flex justify-center items-center h-64">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
       </div>
-    </Layout>
+    </div>
   );
 
-  if (error) return (
-    <Layout>
-      <Alert variant="destructive">
-        <AlertDescription>Error: {error}</AlertDescription>
-      </Alert>
-    </Layout>
-  );
+  // if (error) return (
+  //   <dir>
+  //     <Alert variant="destructive">
+  //       <AlertDescription>Error: {error}</AlertDescription>
+  //     </Alert>
+  //   </dir>
+  // );
 
   return (
-    <Layout>
+    <dir>
       <div className="space-y-6">
         {/* Filters */}
         <Card>
@@ -164,6 +163,6 @@ export default function Inventory() {
           </CardContent>
         </Card>
       </div>
-    </Layout>
+    </dir>
   );
 } 

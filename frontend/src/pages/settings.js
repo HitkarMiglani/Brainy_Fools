@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import Layout from '../components/Layout';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/Card';
 import { Alert, AlertDescription } from '../components/ui/Alert';
 
@@ -53,15 +52,15 @@ export default function Settings() {
   };
 
   if (loading) return (
-    <Layout>
+    <dir>
       <div className="flex justify-center items-center h-64">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
       </div>
-    </Layout>
+    </dir>
   );
 
   return (
-    <Layout>
+    <dir>
       <div className="space-y-6">
         {error && (
           <Alert variant="destructive">
@@ -183,6 +182,6 @@ export default function Settings() {
           </div>
         </form>
       </div>
-    </Layout>
+    </dir>
   );
 } 

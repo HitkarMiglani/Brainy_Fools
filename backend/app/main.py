@@ -13,6 +13,8 @@ from utils.api_integrations import ExternalDataAnalyzer, TwitterAPI, WeatherAPI
 from models.forecasting import ProphetForecaster, LSTMForecaster, EnsembleForecaster
 from models.inventory import InventoryOptimizer
 
+os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"  # Disable oneDNN optimizations for TensorFlow
+
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -29,7 +31,7 @@ app.add_middleware(
 )
 
 # Data paths
-DATA_PATH = "data/retail_store_inventory_cleaned.csv"
+DATA_PATH = "data/store_S004_inventory.csv"
 CHROMA_DB_PATH = "./chroma_db"
 
 # Initialize API components

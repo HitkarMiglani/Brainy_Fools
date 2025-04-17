@@ -96,7 +96,7 @@ class TwitterAPI:
         """
         try:
             # Get location ID
-            available_locations = self.client.get_available_trends()
+            available_locations = self.client.available_trends()
             location_id = next(
                 (loc['woeid'] for loc in available_locations if loc['name'].lower() == location.lower()),
                 None

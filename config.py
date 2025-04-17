@@ -1,0 +1,12 @@
+TWITTER_API_KEY = "OFJLepm6wy9DvdjhePgrzNxev"
+TWITTER_API_SECRET_KEY = "jxubnFnKnDOh4jnSCH8LFryKjYdLnHnLEqcwzfuff1LaDomL46"
+TWITTER_ACCESS_TOKEN = "1912384468163108864-v3bQpvN8JLltaOOgajDc44MtEZIPzN"
+TWITTER_ACCESS_TOKEN_SECRET = "nKrbVeGhNA2TRnzLGBKBnKMBUd6yxIvYl8Xrgyx3nS7Qy"
+
+
+DATA_FILE=r"C:\Users\Admin\Music\HackForge\Brainy_Fools\backend\app\data\retail_store_inventory_cleaned.csv"
+
+OPENWEATHER_API_KEY = "e16b1ec32eb4115eb6d6e4c37cb807a4"
+
+
+
